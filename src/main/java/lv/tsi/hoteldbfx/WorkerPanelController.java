@@ -1,19 +1,36 @@
 package lv.tsi.hoteldbfx;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import net.rgielen.fxweaver.core.FxWeaver;
+import net.rgielen.fxweaver.core.FxmlView;
+import org.springframework.stereotype.Component;
 
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+@Component
+@FxmlView("/workerPanel.fxml")
 public class WorkerPanelController {
+    private final FxWeaver fxWeaver;
+
+    public WorkerPanelController( FxWeaver fxWeaver) {
+        this.fxWeaver = fxWeaver;
+    }
+
+    @FXML
+    private Group root;
 
     @FXML
     private ResourceBundle resources;
@@ -44,31 +61,16 @@ public class WorkerPanelController {
 
     @FXML
     void initialize() {
-/*
-        clientBtn.setOnAction(event -> {
+        clientBtn.setCursor(Cursor.HAND);
+        clientBtn.setOnMouseClicked(event -> {
             clientBtn.getScene().getWindow().hide();
 
-            FXMLLoader loader = new FXMLLoader();
-            FileInputStream file = null;
-
-            try {
-                file = new FileInputStream("src/main/resources/workerPanel.fxml");
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-
-            try {
-                loader.load(file);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
             Stage stage = new Stage();
-            stage.setScene(new Scene(root));
+            stage.setScene(new Scene(fxWeaver.loadView(ClientDetailsController.class), 626, 417));
             stage.showAndWait();
         });
-*/
+
+
 
     }
 }

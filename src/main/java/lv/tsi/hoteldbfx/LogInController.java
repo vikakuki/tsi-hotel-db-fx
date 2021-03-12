@@ -2,19 +2,25 @@ package lv.tsi.hoteldbfx;
 
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import net.rgielen.fxweaver.core.FxWeaver;
+import net.rgielen.fxweaver.core.FxmlView;
+import org.springframework.stereotype.Component;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+@Component
+@FxmlView("/logInForm.fxml")
 public class LogInController {
+    private final FxWeaver fxWeaver;
+
+    public LogInController( FxWeaver fxWeaver) {
+        this.fxWeaver = fxWeaver;
+    }
 
     @FXML
     private ResourceBundle resources;
@@ -27,28 +33,16 @@ public class LogInController {
 
     @FXML
     void initialize() {
+        workerLoginBtn.setCursor(Cursor.HAND);
+
         workerLoginBtn.setOnAction(event -> {
             workerLoginBtn.getScene().getWindow().hide();
 
-            FXMLLoader loader = new FXMLLoader();
-            FileInputStream file = null;
 
-            try {
-                file = new FileInputStream("src/main/resources/workerPanel.fxml");
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-
-            try {
-                loader.load(file);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
             Stage stage = new Stage();
-            stage.setScene(new Scene(root));
+            stage.setScene(new Scene(fxWeaver.loadView(WorkerPanelController.class), 626, 417));
             stage.showAndWait();
+
         });
 
     }
