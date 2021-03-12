@@ -4,10 +4,7 @@ package lv.tsi.hoteldbfx;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import lv.tsi.hoteldbfx.domain.Client;
 import lv.tsi.hoteldbfx.domain.ClientRepository;
 import net.rgielen.fxweaver.core.FxWeaver;
@@ -17,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import java.awt.event.ActionEvent;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 @Component
@@ -57,9 +55,6 @@ public class ClientDetailsController {
     private DatePicker birthDate;
 
     @FXML
-    private ComboBox gender;
-
-    @FXML
     private TextField countryLbl;
 
     @FXML
@@ -78,17 +73,11 @@ public class ClientDetailsController {
     private Button deleteBtn;
 
     @FXML
-    void Select(ActionEvent event) {
-        String s = gender.getSelectionModel().getSelectedItem().toString();
-    }
-
+    private ChoiceBox<String> gender;
 
     @FXML
     void initialize() {
-        ObservableList<String> genderList = FXCollections.observableArrayList("Female", "Male", "Wont answer");
-        gender.setItems(genderList);
-        Client client = new Client("Viktorija");
-        clientRepository.save(client);
+        gender.getItems().addAll("Female", "Male", "Wont answer");
 
     }
 }

@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "clients")
-public class Client {
+@Table(name = "workers")
+public class Worker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id = -1;
@@ -14,20 +14,23 @@ public class Client {
     @Column(nullable = false)
     private String surname;
     @Column(nullable = false)
-    private String country;
+    private String position;
     @Column(nullable = false)
-    private String city;
-    private String gender;
+    private String login;
+    @Column(nullable = false)
+    private String password;
+    @Column(nullable = false)
+    private double salary;
     @Column(nullable = false)
     private String email;
-    @Column(name = "phone_number",nullable = false)
+    @Column(name = "phone_number", nullable = false)
     private int phoneNumber;
     @Column(name = "birth_date", nullable = false)
     private Date birthDate;
 
-    public Client(){};
+    public Worker(){};
 
-    public Client(String name) {
+    public Worker(String name) {
         this.name = name;
     }
 
