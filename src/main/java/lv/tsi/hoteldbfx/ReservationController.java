@@ -141,7 +141,6 @@ public class ReservationController {
 
         findBtn.setCursor(Cursor.HAND);
         findBtn.setOnAction(event -> {
-            findBtn.getScene().getWindow().hide();
 
             long reservationId = Long.parseLong(lookingId.getText());
             Reservation reservation = reservationRepository.findReservationBy(reservationId);
@@ -171,9 +170,8 @@ public class ReservationController {
             roomFloor.setText(String.valueOf(roomById.getFloor()));
             roomPrice.setText(String.valueOf(roomById.getPrice()));
 
-            /*
-            Bill bill = reservation.getBill();
 
+            Bill bill = billRepository.findBillBy(reservationId);
             if (bill != null) {
                 billId.setText(String.valueOf(bill.getId()));
                 Bill billBy = billRepository.findBillBy(bill.getId());
@@ -185,7 +183,7 @@ public class ReservationController {
             Date date = new Date();
             LocalDate today = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             todayDate.setValue(today);
-*/
+
 
         });
 

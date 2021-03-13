@@ -12,10 +12,10 @@ public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id = -1;
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Reservation.class)
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Reservation.class)
     @JoinColumn(name = "reservation_id" , nullable = false)
     private Reservation reservation;
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Worker.class)
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Worker.class)
     @JoinColumn(name = "worker_id", nullable = false)
     private Worker worker;
     @Column(nullable = false)

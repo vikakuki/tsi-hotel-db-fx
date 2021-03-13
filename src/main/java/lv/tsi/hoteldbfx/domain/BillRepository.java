@@ -10,6 +10,9 @@ public interface BillRepository extends JpaRepository<Bill, Long> {
     @Query("SELECT bill FROM Bill bill WHERE bill.id = ?1")
     public Bill findBillBy(Long id);
 
+    @Query("SELECT bill FROM Bill bill WHERE bill.reservation = ?1")
+    public Bill findBillByReservation(Reservation reservation);
+
 
 
 }

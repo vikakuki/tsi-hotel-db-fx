@@ -15,6 +15,7 @@ import lv.tsi.hoteldbfx.domain.Client;
 import lv.tsi.hoteldbfx.domain.ClientRepository;
 import lv.tsi.hoteldbfx.domain.Room;
 import lv.tsi.hoteldbfx.domain.RoomRepository;
+import lv.tsi.hoteldbfx.service.ReportService;
 import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,14 +29,18 @@ import java.util.ResourceBundle;
 @Component
 @FxmlView("/clientsTable.fxml")
 public class ClientsViewController {
-    private ClientRepository clientRepository;
+    private ReportService reportService;
     private final FxWeaver fxWeaver;
 
     private final ObservableList<Client> clients;
 
     @Autowired
-    public ClientsViewController(ClientRepository clientRepository, FxWeaver fxWeaver) {
-        this.clientRepository = clientRepository;
+    public ClientsViewController(
+            ClientRepository clientRepository,
+            ReportService reportService,
+            FxWeaver fxWeaver
+    ) {
+        this.reportService = reportService;
         this.fxWeaver = fxWeaver;
         List<Client> roomList = clientRepository.findAll();
         clients = FXCollections.observableArrayList(roomList);
@@ -98,6 +103,12 @@ public class ClientsViewController {
 
             stage.setScene(new Scene(fxWeaver.loadView(WorkerPanelController.class), 626, 417));
             stage.showAndWait();
+        });
+
+        reportBtn.setCursor(Cursor.HAND);
+        reportBtn.setOnAction(event -> {
+            long clientId = Long.parseLong(reportId.getText());
+            reportService.createReport(clientId);
         });
     }
 

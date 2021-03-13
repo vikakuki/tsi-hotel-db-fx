@@ -197,7 +197,7 @@ public class ClientDetailsController {
         clientRepository.save(client);
         //clientRepository.addNewClient(cityLblText, country, gender, name, surname, birthDay, email, phoneNumber, personalCode);
 
-        return Optional.empty();
+        return Optional.of(client);
     }
 
     private Optional<Client> findClient(long id) {
