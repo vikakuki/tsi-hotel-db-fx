@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ecdeb9 #ecdeb9;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lv.tsi.hoteldbfx.RoomsViewController">
+    <children>
+        <AnchorPane prefHeight="5.0" prefWidth="533.0" style="-fx-background-color: #9a6c4e;">
+            <children>
+                <Label layoutX="25.0" layoutY="8.0" text="Hotel's rooms" textFill="WHITE">
+                    <font>
+                        <Font name="Arial" size="16.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+      <AnchorPane layoutY="49.0" prefHeight="351.0" prefWidth="600.0" style="-fx-background-color: #fafafa;">
+         <children>
+            <TableView fx:id="roomsTable" layoutY="14.0" prefHeight="315.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                <TableColumn fx:id="id" prefWidth="130.0" text="ID" />
+                <TableColumn fx:id="category" prefWidth="114.0" text="CATEGORY" />
+                  <TableColumn fx:id="floor" prefWidth="119.0" text="FLOOR" />
+                  <TableColumn fx:id="isSeaView" prefWidth="113.0" text="IS SEA VIEW" />
+                  <TableColumn fx:id="price" minWidth="8.0" prefWidth="123.0" text="PRICE" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+    </children>
+</AnchorPane>

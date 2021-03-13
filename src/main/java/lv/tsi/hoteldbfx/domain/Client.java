@@ -9,34 +9,21 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id = -1;
-    @Column(nullable = false)
-    private String name;
-    @Column(nullable = false)
-    private String surname;
+
+    @Embedded
+    private Profile profile;
+
     @Column(nullable = false)
     private String country;
+
     @Column(nullable = false)
     private String city;
+
     private String gender;
-    @Column(nullable = false)
-    private String email;
-    @Column(name = "phone_number",nullable = false)
-    private int phoneNumber;
-    @Column(name = "birth_date", nullable = false)
-    private Date birthDate;
-
-    public Client(){};
-
-    public Client(String name) {
-        this.name = name;
-    }
 
 
     public long getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
 }

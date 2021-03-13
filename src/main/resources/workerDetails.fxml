@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -11,11 +10,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ecdeb9 #ecdeb9;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lv.tsi.hoteldbfx.ClientDetailsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ecdeb9 #ecdeb9;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lv.tsi.hoteldbfx.WorkerDetailsController">
     <children>
         <AnchorPane prefHeight="5.0" prefWidth="533.0" style="-fx-background-color: #9a6c4e;">
             <children>
-                <Label layoutX="25.0" layoutY="8.0" text="Client details" textFill="WHITE">
+                <Label layoutX="25.0" layoutY="8.0" text="Worker details" textFill="WHITE">
                     <font>
                         <Font name="Arial" size="16.0" />
                     </font>
@@ -24,7 +23,7 @@
         </AnchorPane>
       <AnchorPane layoutY="49.0" prefHeight="351.0" prefWidth="600.0" style="-fx-background-color: #fafafa;">
          <children>
-            <Label layoutX="21.0" layoutY="18.0" text="Find Client by ID" textFill="#9a6c4e">
+            <Label layoutX="21.0" layoutY="18.0" text="Find Worker by ID" textFill="#9a6c4e">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
@@ -37,6 +36,11 @@
                   <Cursor fx:constant="TEXT" />
                </cursor>
             </TextField>
+            <Button fx:id="findBtn" layoutX="508.0" layoutY="14.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="66.0" style="-fx-background-color: #9a6c4e;" text="FIND" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Button>
             <Line endX="477.0" layoutX="110.0" layoutY="67.0" startX="-100.0" stroke="#9a6c4e" />
             <Label layoutX="32.0" layoutY="93.0" text="First Name" textFill="#9a6c4e">
                <font>
@@ -76,17 +80,17 @@
                </font>
             </Label>
             <DatePicker fx:id="birthDate" layoutX="110.0" layoutY="148.0" prefHeight="28.0" prefWidth="148.0" style="-fx-background-color: #ffffff;" />
-            <Label layoutX="307.0" layoutY="154.0" text="Gender" textFill="#9a6c4e">
+            <Label layoutX="308.0" layoutY="132.0" text="Login" textFill="#9a6c4e">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="32.0" layoutY="206.0" text="Country" textFill="#9a6c4e">
+            <Label layoutX="32.0" layoutY="206.0" text="Position" textFill="#9a6c4e">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </Label>
-            <TextField fx:id="countryLbl" layoutX="110.0" layoutY="199.0" prefHeight="28.0" prefWidth="134.0" promptText="country" style="-fx-background-color: #ffffff;">
+            <TextField fx:id="position" layoutX="110.0" layoutY="199.0" prefHeight="28.0" prefWidth="134.0" promptText="position" style="-fx-background-color: #ffffff;">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
@@ -97,12 +101,12 @@
                   <Insets />
                </opaqueInsets>
             </TextField>
-            <Label layoutX="307.0" layoutY="207.0" text="City" textFill="#9a6c4e">
+            <Label layoutX="307.0" layoutY="219.0" text="Salary" textFill="#9a6c4e">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </Label>
-            <TextField fx:id="cityLbl" layoutX="407.0" layoutY="200.0" prefHeight="28.0" prefWidth="134.0" promptText="city" style="-fx-background-color: #ffffff;">
+            <TextField fx:id="salary" layoutX="407.0" layoutY="215.0" prefHeight="28.0" prefWidth="134.0" promptText="salary" style="-fx-background-color: #ffffff;">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
@@ -145,7 +149,7 @@
                   <Insets />
                </opaqueInsets>
             </TextField>
-            <Button fx:id="updateBtn" layoutX="495.0" layoutY="305.0" mnemonicParsing="false" style="-fx-background-color: #9a6c4e;" text="UPDATE" textFill="WHITE">
+            <Button fx:id="updateBtn" layoutX="508.0" layoutY="305.0" mnemonicParsing="false" style="-fx-background-color: #9a6c4e;" text="UPDATE" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>
@@ -155,12 +159,33 @@
                   <Font name="Arial Bold" size="12.0" />
                </font>
             </Button>
-            <ChoiceBox fx:id="gender" layoutX="407.0" layoutY="147.0" prefHeight="28.0" prefWidth="108.0" />
-            <Button fx:id="findBtn" layoutX="495.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: #9a6c4e;" text="FIND" textFill="WHITE">
+            <Label layoutX="307.0" layoutY="177.0" text="Password" textFill="#9a6c4e">
                <font>
-                  <Font name="Arial Bold" size="12.0" />
+                  <Font name="Arial" size="12.0" />
                </font>
-            </Button>
+            </Label>
+            <TextField fx:id="login" layoutX="407.0" layoutY="126.0" prefHeight="28.0" prefWidth="134.0" promptText="login" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <TextField fx:id="password" layoutX="407.0" layoutY="171.0" prefHeight="28.0" prefWidth="134.0" promptText="password" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
          </children>
       </AnchorPane>
     </children>

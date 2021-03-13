@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ecdeb9 #ecdeb9;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lv.tsi.hoteldbfx.ReservationController">
+    <children>
+        <AnchorPane prefHeight="5.0" prefWidth="533.0" style="-fx-background-color: #9a6c4e;">
+            <children>
+                <Label layoutX="25.0" layoutY="8.0" text="Check details" textFill="WHITE">
+                    <font>
+                        <Font name="Arial" size="16.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+      <AnchorPane layoutY="49.0" prefHeight="351.0" prefWidth="600.0" style="-fx-background-color: #fafafa;">
+         <children>
+            <Label layoutX="21.0" layoutY="18.0" text="Find Reservation by ID" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="lookingId" layoutX="152.0" layoutY="12.0" prefHeight="28.0" prefWidth="64.0" promptText="id" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <Line endX="477.0" layoutX="111.0" layoutY="48.0" startX="-100.0" stroke="#9a6c4e" />
+            <Label layoutX="20.0" layoutY="57.0" text="Client id" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="clientId" layoutX="90.0" layoutY="52.0" prefHeight="23.0" prefWidth="108.0" promptText="client id" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <Label layoutX="20.0" layoutY="258.0" text="Country" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="clientBirthDate" layoutX="90.0" layoutY="140.0" prefHeight="1.0" prefWidth="108.0" promptText="birth date" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <Label layoutX="21.0" layoutY="86.0" text="Name" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="checkInDate" layoutX="474.0" layoutY="81.0" prefHeight="1.0" prefWidth="108.0" style="-fx-background-color: #ffffff;" />
+            <Label layoutX="21.0" layoutY="231.0" text="Gender" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="115.0" text="Surname" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="clientName" layoutX="91.0" layoutY="82.0" prefHeight="23.0" prefWidth="108.0" promptText="name" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <Label layoutX="21.0" layoutY="202.0" text="Phone" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="clientCity" layoutX="91.0" layoutY="285.0" prefHeight="23.0" prefWidth="108.0" promptText="city" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <Label layoutX="22.0" layoutY="147.0" text="Birth date" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="173.0" text="Email" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="clientSurname" layoutX="90.0" layoutY="111.0" prefHeight="15.0" prefWidth="108.0" promptText="surname" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <TextField fx:id="clientCountry" layoutX="91.0" layoutY="254.0" prefHeight="15.0" prefWidth="108.0" promptText="country" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <Button fx:id="updateBtn" layoutX="328.0" layoutY="305.0" mnemonicParsing="false" style="-fx-background-color: #9a6c4e;" text="UPDATE" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="deleteBtn" layoutX="227.0" layoutY="305.0" mnemonicParsing="false" style="-fx-background-color: #9a6c4e;" text="DELETE" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Button>
+            <Label layoutX="20.0" layoutY="289.0" text="City" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="clientEmail" layoutX="90.0" layoutY="169.0" prefHeight="1.0" prefWidth="108.0" promptText="email" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <TextField fx:id="clientPhone" layoutX="90.0" layoutY="198.0" prefHeight="1.0" prefWidth="108.0" promptText="phone" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <TextField fx:id="clientGender" layoutX="90.0" layoutY="227.0" prefHeight="1.0" prefWidth="108.0" promptText="gender" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <Label layoutX="225.0" layoutY="57.0" text="Room id" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="roomId" layoutX="286.0" layoutY="53.0" prefHeight="23.0" prefWidth="108.0" promptText="room id" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <Label layoutX="224.0" layoutY="86.0" text="Category" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="roomCategory" layoutX="286.0" layoutY="82.0" prefHeight="23.0" prefWidth="108.0" promptText="category" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <Label layoutX="225.0" layoutY="115.0" text="View" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="226.0" layoutY="147.0" text="Floor" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="227.0" layoutY="177.0" text="Price" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="roomView" layoutX="286.0" layoutY="111.0" prefHeight="23.0" prefWidth="108.0" promptText="view" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <TextField fx:id="roomFloor" layoutX="286.0" layoutY="140.0" prefHeight="23.0" prefWidth="108.0" promptText="floor" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <TextField fx:id="roomPrice" layoutX="286.0" layoutY="173.0" prefHeight="23.0" prefWidth="108.0" promptText="price" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <Label layoutX="410.0" layoutY="57.0" text="Bill id" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="billId" layoutX="474.0" layoutY="53.0" prefHeight="23.0" prefWidth="108.0" promptText="bill id" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <Label layoutX="409.0" layoutY="88.0" text="Check in" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="408.0" layoutY="123.0" text="Check out" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="410.0" layoutY="156.0" text="Pay" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="409.0" layoutY="190.0" text="Today date" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="checkOutDate" layoutX="474.0" layoutY="118.0" prefHeight="1.0" prefWidth="108.0" style="-fx-background-color: #ffffff;" />
+            <DatePicker fx:id="todayDate" layoutX="474.0" layoutY="184.0" prefHeight="1.0" prefWidth="108.0" style="-fx-background-color: #ffffff;" />
+            <TextField fx:id="paymentSumm" layoutX="474.0" layoutY="151.0" prefHeight="23.0" prefWidth="108.0" promptText="amount" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <Button fx:id="addNewBtn" layoutX="489.0" layoutY="305.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="82.0" style="-fx-background-color: #9a6c4e;" text="ADD NEW" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="findBtn" layoutX="505.0" layoutY="12.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="66.0" style="-fx-background-color: #9a6c4e;" text="FIND" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Button>
+            <Label layoutX="225.0" layoutY="251.0" text="Worker id" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="workerId" layoutX="286.0" layoutY="247.0" prefHeight="23.0" prefWidth="108.0" promptText="id" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+         </children>
+      </AnchorPane>
+    </children>
+</AnchorPane>

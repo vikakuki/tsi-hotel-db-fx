@@ -14,11 +14,27 @@ public class Room {
     @Column(nullable = false)
     private String category;
     @Column(nullable = false)
-    private boolean isSeaView;
+    private String view;
     @Column(nullable = false)
     private double price;
 
     public long getId() {
         return id;
+    }
+
+    public int getFloor() {
+        return floor;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getView() {
+        return view;
+    }
+
+    public double getPrice() {
+        return price;
     }
 }
