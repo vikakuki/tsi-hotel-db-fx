@@ -1,20 +1,29 @@
 package lv.tsi.hoteldbfx;
 
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.Cursor;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import lv.tsi.hoteldbfx.domain.Client;
 import lv.tsi.hoteldbfx.domain.ClientRepository;
+import lv.tsi.hoteldbfx.domain.Profile;
 import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 @Component
@@ -64,7 +73,16 @@ public class ClientDetailsController {
     private TextField emailLbl;
 
     @FXML
+    private TextField idLbl;
+
+    @FXML
     private TextField phoneLbl;
+
+    @FXML
+    private TextField errorLbl;
+
+    @FXML
+    private Button addNewBtn;
 
     @FXML
     private Button updateBtn;
@@ -73,11 +91,129 @@ public class ClientDetailsController {
     private Button deleteBtn;
 
     @FXML
+    private Button backBtn;
+
+    @FXML
     private ChoiceBox<String> gender;
 
     @FXML
     void initialize() {
         gender.getItems().addAll("Female", "Male", "Wont answer");
+        Stage stage = new Stage();
 
+        backBtn.setCursor(Cursor.HAND);
+        findBtn.setCursor(Cursor.HAND);
+        addNewBtn.setCursor(Cursor.HAND);
+        updateBtn.setCursor(Cursor.HAND);
+        deleteBtn.setCursor(Cursor.HAND);
+        backBtn.setOnAction(event -> {
+            backBtn.getScene().getWindow().hide();
+
+            stage.setScene(new Scene(fxWeaver.loadView(WorkerPanelController.class), 626, 417));
+            stage.showAndWait();
+        });
+
+        findBtn.setOnAction(event -> {
+            Optional<Client> client = findClient(Long.parseLong(lookingId.getText()));
+
+            if (client.isPresent()) {
+                updateClientUI(client.get());
+                return;
+            }
+
+            showError("Client is not found");
+
+        });
+
+        addNewBtn.setOnAction(event -> {
+            saveNewClient();
+
+ /*           if (client.isPresent()) {
+                updateClientUI(client.get());
+                return;
+            }
+
+            showError("New client add FAILED");*/
+        });
+
+        updateBtn.setOnAction(event -> {
+            Long clientId = Long.valueOf(idLbl.getText());
+            Optional<Client> client = findClient(clientId);
+
+            if (client.isPresent()) {
+                updateClient(client.get());
+                Optional<Client> updatedClient = findClient(clientId);
+                updateClientUI(updatedClient.get());
+                return;
+            }
+
+            showError("Wrong client, write right client ID");
+        });
+
+        deleteBtn.setOnAction(event -> {
+            clientRepository.deleteClientBy(Long.parseLong(lookingId.getText()));
+        });
+    }
+
+    private void updateClient(Client client) {
+        String city = cityLbl.getText();
+        String country = countryLbl.getText();
+        String gender = this.gender.getValue();
+        String name = nameLbl.getText();
+        String surname = surnameLbl.getText();
+        LocalDate date = birthDate.getValue();
+        Date birthDay = java.sql.Date.valueOf(date);
+        String email = emailLbl.getText();
+        Integer phoneNumber = Integer.parseInt(phoneLbl.getText());
+
+        clientRepository.updateClient(client.getId(), city, country, gender, name, surname, birthDay, email, phoneNumber);
+    }
+
+    private void showError(String msg) {
+        errorLbl.setVisible(true);
+        errorLbl.setText(msg);
+        errorLbl.setStyle("-fx-text-inner-color: red;");
+    }
+
+    private void saveNewClient() {
+        String name = nameLbl.getText();
+        String surname = surnameLbl.getText();
+        Integer phoneNumber = Integer.parseInt(phoneLbl.getText());
+        String cityLblText = cityLbl.getText();
+        String country = countryLbl.getText();
+        String gender = this.gender.getValue();
+        String email = emailLbl.getText();
+        Date birthDay = java.sql.Date.valueOf(birthDate.getValue());
+
+       // Profile profile = new Profile(name, surname, email, phoneLbl.getText(), birthDate.getValue());
+       // Client client = new Client(profile, country, cityLblText, gender);                    will use for standart method clientRepository.save(client);
+
+        clientRepository.addNewClient(cityLblText, country, gender, name, surname, birthDay, email, phoneNumber);
+    }
+
+    private Optional<Client> findClient(long id) {
+        Client client = clientRepository.findClientById(id);
+
+        if (client == null) {
+            return Optional.empty();
+        }
+
+        return Optional.of(client);
+    }
+
+    private void updateClientUI(Client client) {
+        Profile profile = client.getProfile();
+        Date birthDate = new Date(profile.getBirthDate().getTime());
+        LocalDate date = birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        cityLbl.setText(client.getCity());
+        countryLbl.setText(client.getCountry());
+        emailLbl.setText(profile.getEmail());
+        nameLbl.setText(profile.getName());
+        surnameLbl.setText(profile.getSurname());
+        this.birthDate.setValue(date);
+        phoneLbl.setText(String.valueOf(profile.getPhoneNumber()));
+        gender.setValue(client.getGender());
+        idLbl.setText(String.valueOf(client.getId()));
     }
 }

@@ -2,9 +2,12 @@ package lv.tsi.hoteldbfx;
 
 
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import lv.tsi.hoteldbfx.domain.RoomRepository;
 import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.core.FxmlView;
@@ -109,9 +112,31 @@ public class ReservationController {
     private TextField workerId;
 
     @FXML
+    private Button backBtn;
+
+
+    @FXML
     void initialize() {
+        Stage stage = new Stage();
+        stage.setTitle("Hotel Database Management");
 
+        backBtn.setCursor(Cursor.HAND);
+        backBtn.setOnAction(event -> {
+            backBtn.getScene().getWindow().hide();
 
+            stage.setScene(new Scene(fxWeaver.loadView(WorkerPanelController.class), 626, 417));
+            stage.setTitle("Hotel Database Management");
+            stage.showAndWait();
+        });
+
+        addNewBtn.setCursor(Cursor.HAND);
+        addNewBtn.setOnAction(event -> {
+            addNewBtn.getScene().getWindow().hide();
+
+            stage.setScene(new Scene(fxWeaver.loadView(MakeReservationController.class), 626, 417));
+            stage.setTitle("Hotel Database Management");
+            stage.showAndWait();
+        });
 
     }
 

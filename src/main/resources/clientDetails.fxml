@@ -156,12 +156,43 @@
                </font>
             </Button>
             <ChoiceBox fx:id="gender" layoutX="407.0" layoutY="147.0" prefHeight="28.0" prefWidth="108.0" />
-            <Button fx:id="findBtn" layoutX="495.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: #9a6c4e;" text="FIND" textFill="WHITE">
+            <Button fx:id="findBtn" layoutX="244.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: #9a6c4e;" text="FIND" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>
             </Button>
+            <Button fx:id="addNewBtn" layoutX="114.0" layoutY="306.0" mnemonicParsing="false" style="-fx-background-color: #9a6c4e;" text="ADD NEW" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Button>
+            <Label layoutX="366.0" layoutY="19.0" text="id" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="idLbl" layoutX="385.0" layoutY="14.0" prefHeight="15.0" prefWidth="51.0" promptText="id" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <TextField fx:id="errorLbl" layoutX="20.0" layoutY="40.0" prefHeight="15.0" prefWidth="508.0" visible="false">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </TextField>
          </children>
       </AnchorPane>
+      <Button fx:id="backBtn" layoutX="546.0" layoutY="-3.0" mnemonicParsing="false" style="-fx-background-color: #9a6c4e;" text="BACK" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

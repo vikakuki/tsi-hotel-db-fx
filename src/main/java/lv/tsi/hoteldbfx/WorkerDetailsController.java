@@ -70,6 +70,9 @@ public class WorkerDetailsController {
     private Button deleteBtn;
 
     @FXML
+    private Button backBtn;
+
+    @FXML
     private TextField login;
 
     @FXML

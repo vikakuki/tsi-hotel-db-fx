@@ -59,11 +59,12 @@ public class WorkerPanelController {
         clientBtn.setCursor(Cursor.HAND);
         workerBtn.setCursor(Cursor.HAND);
         roomsBtn.setCursor(Cursor.HAND);
+        Stage stage = new Stage();
+        stage.setTitle("Hotel Database Management");
 
         clientBtn.setOnMouseClicked(event -> {
             clientBtn.getScene().getWindow().hide();
 
-            Stage stage = new Stage();
             stage.setScene(new Scene(fxWeaver.loadView(ClientDetailsController.class), 626, 417));
             stage.showAndWait();
         });
@@ -71,7 +72,6 @@ public class WorkerPanelController {
         workerBtn.setOnMouseClicked(event -> {
             workerBtn.getScene().getWindow().hide();
 
-            Stage stage = new Stage();
             stage.setScene(new Scene(fxWeaver.loadView(WorkerDetailsController.class), 626, 417));
             stage.showAndWait();
         });
@@ -79,7 +79,6 @@ public class WorkerPanelController {
         roomsBtn.setOnMouseClicked(event -> {
             roomsBtn.getScene().getWindow().hide();
 
-            Stage stage = new Stage();
             stage.setScene(new Scene(fxWeaver.loadView(RoomsViewController.class), 626, 417));
             stage.showAndWait();
         });
@@ -87,7 +86,6 @@ public class WorkerPanelController {
         checksBtn.setOnMouseClicked(event -> {
             checksBtn.getScene().getWindow().hide();
 
-            Stage stage = new Stage();
             stage.setScene(new Scene(fxWeaver.loadView(ReservationController.class), 626, 417));
             stage.showAndWait();
         });
@@ -95,8 +93,7 @@ public class WorkerPanelController {
         reservationBtn.setOnMouseClicked(event -> {
             reservationBtn.getScene().getWindow().hide();
 
-            Stage stage = new Stage();
-            stage.setScene(new Scene(fxWeaver.loadView(MakeReservationController.class), 626, 417));
+            stage.setScene(new Scene(fxWeaver.loadView(ReservationController.class), 626, 417));
             stage.showAndWait();
         });
 
@@ -104,7 +101,6 @@ public class WorkerPanelController {
         logOutBtn.setOnAction(event -> {
             logOutBtn.getScene().getWindow().hide();
 
-            Stage stage = new Stage();
             Class<LogInController> controllerClass = LogInController.class;
             stage.setScene(new Scene(fxWeaver.loadView(controllerClass), 626, 417));
             stage.showAndWait();

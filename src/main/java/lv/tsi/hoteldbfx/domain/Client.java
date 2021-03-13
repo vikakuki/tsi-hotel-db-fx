@@ -21,9 +21,33 @@ public class Client {
 
     private String gender;
 
+    public Client() {}
+
+    public Client(Profile profile, String country, String city, String gender) {
+        this.profile = profile;
+        this.country = country;
+        this.city = city;
+        this.gender = gender;
+    }
+
 
     public long getId() {
         return id;
     }
 
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getGender() {
+        return gender;
+    }
 }

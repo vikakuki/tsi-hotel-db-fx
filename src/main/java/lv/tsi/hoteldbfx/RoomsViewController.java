@@ -3,9 +3,13 @@ package lv.tsi.hoteldbfx;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import lv.tsi.hoteldbfx.domain.Room;
 import lv.tsi.hoteldbfx.domain.RoomRepository;
 import net.rgielen.fxweaver.core.FxWeaver;
@@ -52,10 +56,13 @@ public class RoomsViewController {
     private TableColumn<Room, Integer> floor;
 
     @FXML
-    private TableColumn<Room, Boolean> isSeaView;
+    private TableColumn<Room, String> view;
 
     @FXML
     private TableColumn<Room, Double> price;
+
+    @FXML
+    private Button backBtn;
 
     @FXML
     void initialize() {
@@ -63,11 +70,20 @@ public class RoomsViewController {
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         category.setCellValueFactory(new PropertyValueFactory<>("category"));
         floor.setCellValueFactory(new PropertyValueFactory<>("floor"));
-        isSeaView.setCellValueFactory(new PropertyValueFactory<Room, Boolean>("isSeaView"));
+        view.setCellValueFactory(new PropertyValueFactory<>("view"));
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
         roomsTable.setItems(rooms);
 
+        Stage stage = new Stage();
+        stage.setTitle("Hotel Database Management");
 
+        backBtn.setCursor(Cursor.HAND);
+        backBtn.setOnAction(event -> {
+            backBtn.getScene().getWindow().hide();
+
+            stage.setScene(new Scene(fxWeaver.loadView(WorkerPanelController.class), 626, 417));
+            stage.showAndWait();
+        });
     }
 
 }
