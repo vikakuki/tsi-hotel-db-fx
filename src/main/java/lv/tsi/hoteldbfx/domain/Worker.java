@@ -29,4 +29,23 @@ public class Worker {
         return id;
     }
 
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
 }
