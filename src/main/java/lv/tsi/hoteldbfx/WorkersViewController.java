@@ -82,8 +82,8 @@ public class WorkersViewController {
 
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        surname.setCellValueFactory(new PropertyValueFactory<>("profile.surname"));
-        email.setCellValueFactory(new PropertyValueFactory<>("profile.email"));
+        surname.setCellValueFactory(new PropertyValueFactory<>("surname"));
+        email.setCellValueFactory(new PropertyValueFactory<>("email"));
         position.setCellValueFactory(new PropertyValueFactory<>("position"));
         salary.setCellValueFactory(new PropertyValueFactory<>("salary"));
 

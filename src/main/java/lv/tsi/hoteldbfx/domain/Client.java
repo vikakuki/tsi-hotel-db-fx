@@ -50,4 +50,26 @@ public class Client {
     public String getGender() {
         return gender;
     }
+
+    public String getName() {
+       return profile.getName();
+    }
+
+    public String getSurname() {
+       return profile.getSurname();
+    }
+
+    public String getEmail() {
+       return profile.getEmail();
+    }
+
+    public Date getBirthDate() {
+       return profile.getBirthDate();
+    }
+
+    public String getPhoneNumber() {
+       return String.valueOf(profile.getPhoneNumber());
+    }
+
+
 }

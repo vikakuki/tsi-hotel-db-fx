@@ -7,10 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import lv.tsi.hoteldbfx.domain.Client;
-import lv.tsi.hoteldbfx.domain.ClientRepository;
-import lv.tsi.hoteldbfx.domain.Room;
-import lv.tsi.hoteldbfx.domain.RoomRepository;
+import lv.tsi.hoteldbfx.domain.*;
+import lv.tsi.hoteldbfx.service.ReservationService;
 import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +24,12 @@ public class MakeReservationController {
     private RoomRepository roomRepository;
     private final FxWeaver fxWeaver;
     private ClientRepository clientRepository;
+    private ReservationService reservationService;
 
     @Autowired
-    public MakeReservationController(RoomRepository roomRepository, ClientRepository clientRepository, FxWeaver fxWeaver) {
+    public MakeReservationController(RoomRepository roomRepository, ClientRepository clientRepository, ReservationService reservationService, FxWeaver fxWeaver) {
         this.roomRepository = roomRepository;
+        this.reservationService = reservationService;
         this.fxWeaver = fxWeaver;
         this.clientRepository = clientRepository;
     }
@@ -106,12 +106,12 @@ public class MakeReservationController {
 
         findClientBtn.setOnAction(event -> {
             long id = Long.parseLong(clientId.getText());
-            Optional<Client> client = Optional.of(clientRepository.findClientById(id));
+            Client client = clientRepository.findClientById(id);
 
-            if (client.isPresent()) {
-                clientName.setText(client.get().getProfile().getName());
-                clientSurname.setText(client.get().getProfile().getSurname());
-                personalCodeLbl.setText(String.valueOf(client.get().getProfile().getPersonalCode()));
+            if (client != null) {
+                clientName.setText(client.getProfile().getName());
+                clientSurname.setText(client.getProfile().getSurname());
+                personalCodeLbl.setText(String.valueOf(client.getProfile().getPersonalCode()));
                 return;
             }
 
@@ -119,15 +119,14 @@ public class MakeReservationController {
         });
 
         findRoomBtn.setOnAction(event -> {
-            long id = Long.parseLong(roomId.getText());
-            Optional<Room> room = Optional.of(roomRepository.findRoomById(id));
+            int id = Integer.parseInt(roomId.getText());
+            Room room = roomRepository.findRoomById(id);
 
-            if (room.isPresent()) {
-                Room myRoom = room.get();
-                roomCategory.setText(myRoom.getCategory());
-                roomFloor.setText(String.valueOf(myRoom.getFloor()));
-                roomPrice.setText(String.valueOf(myRoom.getPrice()));
-                roomView.setText(myRoom.getView());
+            if (room != null) {
+                roomCategory.setText(room.getCategory());
+                roomFloor.setText(String.valueOf(room.getFloor()));
+                roomPrice.setText(String.valueOf(room.getPrice()));
+                roomView.setText(room.getView());
                 return;
             }
 
@@ -135,9 +134,18 @@ public class MakeReservationController {
         });
 
         saveBtn.setOnAction(event -> {
-            saveBtn.getScene().getWindow().hide();
 
+            long clientPersonalCode = Long.parseLong(personalCodeLbl.getText());
+            int roomId = Integer.parseInt(this.roomId.getText());
 
+            Optional<Reservation> reservation = reservationService.createReservation(clientPersonalCode, checkInDate.getValue(), checkOutDate.getValue(), roomId);
+
+            if (reservation.isPresent()) {
+
+                return;
+            }
+
+            showError("Reservation was not made");
         });
 
     }

@@ -16,6 +16,9 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
     @Query("SELECT client FROM Client client WHERE client.id = ?1")
     public Client findClientById(Long id);
 
+    @Query("SELECT client FROM Client client WHERE client.profile.personalCode = ?1")
+    public Client findClientByCode(Long code);
+
     @Modifying(clearAutomatically = true)
     @Transactional
     @Query("UPDATE Client client set client.city = ?2," +
@@ -24,19 +27,21 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
     public void updateClient(Long id, String city, String country, String gender, String name, String surname, Date birthDate, String email, Integer phoneNumber, Long personalCode);
 
 
+/*
     @Modifying
     @Query(value = "insert into clients (city, country, gender, birth_date, email, name, phone_number, surname)" +
             " VALUES (clients.city = ?1, country = ?2, gender = ?3, birth_date = ?6, email = ?7, name = ?4, phone_number = ?8, surname = ?5)", nativeQuery = true)
     @Transactional
     public void addNewClient(String city, String country, String gender, String name, String surname, Date birthDate, String email, Integer phoneNumber, Long personalCode);
+*/
 
-    /*
-    *     @Modifying
-    @Query("insert into clients (city, country, gender, birth_date, email, name, phone_number, surname) select :city, :county, :gender, :name, :surname,: birthDate, :email, :phoneNumber, :personalCode from Client")
-    public void addNewClient(@Param("city")String city, @Param("country")String country, @Param("gender")String gender, @Param("name")String name, @Param("surname")String surname, @Param("birth_date")Date birthDate, @Param("email")String email, @Param("phone_Number")Integer phoneNumber, @Param("personal_code")Long personalCode);
+/*
+    @Modifying
+    @Query(value = "insert into Client (city, country, gender, birthDate, email, name, phoneNumber, surname) values :city, :country, :gender, :name, :surname,: birthDate, :email, :phoneNumber, :personalCode from Client", nativeQuery = true)
+    public void addNewClient(@Param("city") String city, @Param("country") String country, @Param("gender") String gender, @Param("name") String name, @Param("surname") String surname, @Param("birth_date") Date birthDate, @Param("email") String email, @Param("phone_Number") Integer phoneNumber, @Param("personal_code") Long personalCode);
 
-    *
-    * */
+*/
+
 
     @Modifying
     @Transactional

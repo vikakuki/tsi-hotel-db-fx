@@ -8,7 +8,8 @@ import org.springframework.stereotype.Repository;
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 
 
-
+    @Query("SELECT reservation FROM Reservation reservation WHERE reservation.id = ?1")
+    public Reservation findReservationBy(Long id);
 
 
 }

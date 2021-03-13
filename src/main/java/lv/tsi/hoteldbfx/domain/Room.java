@@ -8,7 +8,7 @@ import java.sql.Date;
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id = -1;
+    private int id = -1;
     @Column(nullable = false)
     private int floor;
     @Column(nullable = false)
@@ -18,7 +18,7 @@ public class Room {
     @Column(nullable = false)
     private double price;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

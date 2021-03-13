@@ -7,7 +7,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BillRepository extends JpaRepository<Bill, Long> {
 
-
+    @Query("SELECT bill FROM Bill bill WHERE bill.id = ?1")
+    public Bill findBillBy(Long id);
 
 
 

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 public interface RoomRepository extends JpaRepository<Room, Long> {
 
         @Query("SELECT room FROM Room room WHERE room.id = ?1")
-        public Room findRoomById(Long id);
+        public Room findRoomById(Integer id);
 
 
 }

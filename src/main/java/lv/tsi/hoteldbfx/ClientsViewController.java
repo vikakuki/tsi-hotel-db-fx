@@ -82,11 +82,10 @@ public class ClientsViewController {
 
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        surname.setCellValueFactory(new PropertyValueFactory<>("profile.surname"));
-        email.setCellValueFactory(new PropertyValueFactory<>("profile.email"));
-        phone.setCellValueFactory(new PropertyValueFactory<>("profile.phone"));
-        birthDate.setCellValueFactory(new PropertyValueFactory<>("profile.birthDate"));
-
+        surname.setCellValueFactory(new PropertyValueFactory<>("surname"));
+        email.setCellValueFactory(new PropertyValueFactory<>("email"));
+        phone.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        birthDate.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
 
         clientTable.setItems(clients);
 

@@ -127,6 +127,7 @@ public class ClientDetailsController {
         });
 
         addNewBtn.setOnAction(event -> {
+
             Optional<Client> client = saveNewClient();
 
             if (client.isPresent()) {
@@ -181,20 +182,22 @@ public class ClientDetailsController {
         String name = nameLbl.getText();
         String surname = surnameLbl.getText();
         Integer phoneNumber = Integer.parseInt(phoneLbl.getText());
-        Long personalCode = Long.parseLong(personalCodeLbl.getText());
+        long personalCode = Long.parseLong(personalCodeLbl.getText());
         String cityLblText = cityLbl.getText();
         String country = countryLbl.getText();
         String gender = this.gender.getValue();
         String email = emailLbl.getText();
         Date birthDay = java.sql.Date.valueOf(birthDate.getValue());
 
-        Profile profile = new Profile(name, surname, email, phoneLbl.getText(), birthDate.getValue(), personalCode.toString());
+        //clientRepository.addNewClient(cityLblText, country, gender, name, surname, birthDay, email, phoneNumber, personalCode);
+
+        Profile profile = new Profile(name, surname, email, phoneLbl.getText(), birthDate.getValue(), Long.toString(personalCode));
         Client client = new Client(profile, country, cityLblText, gender);                    //will use for standart method clientRepository.save(client);
 
         clientRepository.save(client);
         //clientRepository.addNewClient(cityLblText, country, gender, name, surname, birthDay, email, phoneNumber, personalCode);
 
-        return Optional.of(client);
+        return Optional.empty();
     }
 
     private Optional<Client> findClient(long id) {
