@@ -15,8 +15,6 @@ import lv.tsi.hoteldbfx.domain.Profile;
 import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
@@ -129,14 +127,14 @@ public class ClientDetailsController {
         });
 
         addNewBtn.setOnAction(event -> {
-            saveNewClient();
+            Optional<Client> client = saveNewClient();
 
- /*           if (client.isPresent()) {
+            if (client.isPresent()) {
                 updateClientUI(client.get());
                 return;
             }
 
-            showError("New client add FAILED");*/
+            showError("New client add FAILED");
         });
 
         updateBtn.setOnAction(event -> {
@@ -164,7 +162,7 @@ public class ClientDetailsController {
         String gender = this.gender.getValue();
         String name = nameLbl.getText();
         String surname = surnameLbl.getText();
-        Integer personalCode = Integer.parseInt(personalCodeLbl.getText());
+        Long personalCode = Long.parseLong(personalCodeLbl.getText());
         LocalDate date = birthDate.getValue();
         Date birthDay = java.sql.Date.valueOf(date);
         String email = emailLbl.getText();
@@ -179,21 +177,24 @@ public class ClientDetailsController {
         errorLbl.setStyle("-fx-text-inner-color: red;");
     }
 
-    private void saveNewClient() {
+    private Optional<Client> saveNewClient() {
         String name = nameLbl.getText();
         String surname = surnameLbl.getText();
         Integer phoneNumber = Integer.parseInt(phoneLbl.getText());
-        Integer personalCode = Integer.parseInt(personalCodeLbl.getText());
+        Long personalCode = Long.parseLong(personalCodeLbl.getText());
         String cityLblText = cityLbl.getText();
         String country = countryLbl.getText();
         String gender = this.gender.getValue();
         String email = emailLbl.getText();
         Date birthDay = java.sql.Date.valueOf(birthDate.getValue());
 
-       // Profile profile = new Profile(name, surname, email, phoneLbl.getText(), birthDate.getValue());
-       // Client client = new Client(profile, country, cityLblText, gender);                    will use for standart method clientRepository.save(client);
+        Profile profile = new Profile(name, surname, email, phoneLbl.getText(), birthDate.getValue(), personalCode.toString());
+        Client client = new Client(profile, country, cityLblText, gender);                    //will use for standart method clientRepository.save(client);
 
-        clientRepository.addNewClient(cityLblText, country, gender, name, surname, birthDay, email, phoneNumber, personalCode);
+        clientRepository.save(client);
+        //clientRepository.addNewClient(cityLblText, country, gender, name, surname, birthDay, email, phoneNumber, personalCode);
+
+        return Optional.of(client);
     }
 
     private Optional<Client> findClient(long id) {

@@ -25,6 +25,17 @@ public class Worker {
     @Column(nullable = false)
     private double salary;
 
+    public Worker() {
+    }
+
+    public Worker(Profile profile, String login, String password, String position, Double salary) {
+        this.profile = profile;
+        this.login = login;
+        this.password = password;
+        this.position = position;
+        this.salary = salary;
+    }
+
     public long getId() {
         return id;
     }

@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import lv.tsi.hoteldbfx.domain.Client;
 import lv.tsi.hoteldbfx.domain.Profile;
 import lv.tsi.hoteldbfx.domain.Worker;
 import lv.tsi.hoteldbfx.domain.WorkerRepository;
@@ -128,7 +129,14 @@ public class WorkerDetailsController {
         });
 
         addNewBtn.setOnAction(event -> {
-            saveNewWorker();
+            Optional<Worker> worker = saveNewWorker();
+
+            if (worker.isPresent()) {
+                updateWorkerUI(worker.get());
+                return;
+            }
+
+            showError("New worker add FAILED");
         });
 
         updateBtn.setOnAction(event -> {
@@ -161,7 +169,7 @@ public class WorkerDetailsController {
         Date birthDay = java.sql.Date.valueOf(date);
         String email = emailLbl.getText();
         Integer phoneNumber = Integer.parseInt(phoneLbl.getText());
-        Integer personalCode = Integer.parseInt(personalCodeLbl.getText());
+        Long personalCode = Long.parseLong(personalCodeLbl.getText());
 
         workerRepository.updateWorker(worker.getId(), salary, position, login, name, surname, birthDay, email, phoneNumber, password, personalCode);
     }
@@ -172,11 +180,11 @@ public class WorkerDetailsController {
         errorLbl.setStyle("-fx-text-inner-color: red;");
     }
 
-    private void saveNewWorker() {
+    private Optional<Worker> saveNewWorker() {
         String login = this.login.getText();
         String surname = surnameLbl.getText();
         Integer phoneNumber = Integer.parseInt(phoneLbl.getText());
-        Integer personalCode = Integer.parseInt(personalCodeLbl.getText());
+        Long personalCode = Long.parseLong(personalCodeLbl.getText());
         String password = this.password.getText();
         String name = nameLbl.getText();
         Double salary = Double.parseDouble(this.salary.getText());
@@ -184,8 +192,15 @@ public class WorkerDetailsController {
         String email = emailLbl.getText();
         Date birthDay = java.sql.Date.valueOf(birthDate.getValue());
 
-        workerRepository.addNewWorker(login, password, position, name, surname, birthDay, email, phoneNumber, salary, personalCode);
+        Profile profile = new Profile(name, surname, email, phoneLbl.getText(), birthDate.getValue(), personalCode.toString());
+        Worker worker = new Worker(profile, login, password, position, salary);
+
+        workerRepository.save(worker);
+
+        //workerRepository.addNewWorker(login, password, position, name, surname, birthDay, email, phoneNumber, salary, personalCode);
+        return Optional.of(worker);
     }
+
 
     private Optional<Worker> findWorker(long id) {
         Worker client = workerRepository.findWorkerById(id);

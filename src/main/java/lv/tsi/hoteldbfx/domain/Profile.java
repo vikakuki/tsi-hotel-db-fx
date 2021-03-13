@@ -15,7 +15,7 @@ public class Profile {
     private String surname;
 
     @Column(name = "personal_code", nullable = false, unique = true)
-    private Integer personalCode;
+    private Long personalCode;
 
     @Column(nullable = false)
     private String email;
@@ -33,7 +33,7 @@ public class Profile {
         this.surname = surname;
         this.email = email;
         this.phoneNumber = Integer.parseInt(phoneNumber);
-        this.personalCode = Integer.parseInt(personalCode);
+        this.personalCode = Long.parseLong(personalCode);
         this.birthDate = Date.valueOf(date);
     }
 
@@ -58,7 +58,7 @@ public class Profile {
         return birthDate;
     }
 
-    public Integer getPersonalCode() {
+    public Long getPersonalCode() {
         return personalCode;
     }
 }
