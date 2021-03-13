@@ -73,6 +73,9 @@ public class ClientDetailsController {
     private TextField emailLbl;
 
     @FXML
+    private TextField personalCodeLbl;
+
+    @FXML
     private TextField idLbl;
 
     @FXML
@@ -161,12 +164,13 @@ public class ClientDetailsController {
         String gender = this.gender.getValue();
         String name = nameLbl.getText();
         String surname = surnameLbl.getText();
+        Integer personalCode = Integer.parseInt(personalCodeLbl.getText());
         LocalDate date = birthDate.getValue();
         Date birthDay = java.sql.Date.valueOf(date);
         String email = emailLbl.getText();
         Integer phoneNumber = Integer.parseInt(phoneLbl.getText());
 
-        clientRepository.updateClient(client.getId(), city, country, gender, name, surname, birthDay, email, phoneNumber);
+        clientRepository.updateClient(client.getId(), city, country, gender, name, surname, birthDay, email, phoneNumber, personalCode);
     }
 
     private void showError(String msg) {
@@ -179,6 +183,7 @@ public class ClientDetailsController {
         String name = nameLbl.getText();
         String surname = surnameLbl.getText();
         Integer phoneNumber = Integer.parseInt(phoneLbl.getText());
+        Integer personalCode = Integer.parseInt(personalCodeLbl.getText());
         String cityLblText = cityLbl.getText();
         String country = countryLbl.getText();
         String gender = this.gender.getValue();
@@ -188,7 +193,7 @@ public class ClientDetailsController {
        // Profile profile = new Profile(name, surname, email, phoneLbl.getText(), birthDate.getValue());
        // Client client = new Client(profile, country, cityLblText, gender);                    will use for standart method clientRepository.save(client);
 
-        clientRepository.addNewClient(cityLblText, country, gender, name, surname, birthDay, email, phoneNumber);
+        clientRepository.addNewClient(cityLblText, country, gender, name, surname, birthDay, email, phoneNumber, personalCode);
     }
 
     private Optional<Client> findClient(long id) {
@@ -213,6 +218,7 @@ public class ClientDetailsController {
         surnameLbl.setText(profile.getSurname());
         this.birthDate.setValue(date);
         phoneLbl.setText(String.valueOf(profile.getPhoneNumber()));
+        personalCodeLbl.setText(String.valueOf(profile.getPersonalCode()));
         gender.setValue(client.getGender());
         idLbl.setText(String.valueOf(client.getId()));
     }

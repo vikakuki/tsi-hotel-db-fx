@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import lv.tsi.hoteldbfx.domain.Client;
 import lv.tsi.hoteldbfx.domain.Profile;
 import lv.tsi.hoteldbfx.domain.Worker;
 import lv.tsi.hoteldbfx.domain.WorkerRepository;
@@ -68,6 +67,9 @@ public class WorkerDetailsController {
     private TextField salary;
 
     @FXML
+    private TextField personalCodeLbl;
+
+    @FXML
     private TextField emailLbl;
 
     @FXML
@@ -117,7 +119,7 @@ public class WorkerDetailsController {
             Optional<Worker> worker = findWorker(Long.parseLong(lookingId.getText()));
 
             if (worker.isPresent()) {
-                updateClientUI(worker.get());
+                updateWorkerUI(worker.get());
                 return;
             }
 
@@ -136,7 +138,7 @@ public class WorkerDetailsController {
             if (worker.isPresent()) {
                 updateWorker(worker.get());
                 Optional<Worker> updatedClient = findWorker(workerId);
-                updateClientUI(updatedClient.get());
+                updateWorkerUI(updatedClient.get());
                 return;
             }
 
@@ -159,8 +161,9 @@ public class WorkerDetailsController {
         Date birthDay = java.sql.Date.valueOf(date);
         String email = emailLbl.getText();
         Integer phoneNumber = Integer.parseInt(phoneLbl.getText());
+        Integer personalCode = Integer.parseInt(personalCodeLbl.getText());
 
-        workerRepository.updateWorker(worker.getId(), salary, position, login, name, surname, birthDay, email, phoneNumber, password);
+        workerRepository.updateWorker(worker.getId(), salary, position, login, name, surname, birthDay, email, phoneNumber, password, personalCode);
     }
 
     private void showError(String msg) {
@@ -173,6 +176,7 @@ public class WorkerDetailsController {
         String login = this.login.getText();
         String surname = surnameLbl.getText();
         Integer phoneNumber = Integer.parseInt(phoneLbl.getText());
+        Integer personalCode = Integer.parseInt(personalCodeLbl.getText());
         String password = this.password.getText();
         String name = nameLbl.getText();
         Double salary = Double.parseDouble(this.salary.getText());
@@ -180,7 +184,7 @@ public class WorkerDetailsController {
         String email = emailLbl.getText();
         Date birthDay = java.sql.Date.valueOf(birthDate.getValue());
 
-        workerRepository.addNewWorker(login, password, position, name, surname, birthDay, email, phoneNumber, salary);
+        workerRepository.addNewWorker(login, password, position, name, surname, birthDay, email, phoneNumber, salary, personalCode);
     }
 
     private Optional<Worker> findWorker(long id) {
@@ -193,7 +197,7 @@ public class WorkerDetailsController {
         return Optional.of(client);
     }
 
-    private void updateClientUI(Worker worker) {
+    private void updateWorkerUI(Worker worker) {
         Profile profile = worker.getProfile();
         Date birthDate = new Date(profile.getBirthDate().getTime());
         LocalDate date = birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -208,5 +212,6 @@ public class WorkerDetailsController {
         phoneLbl.setText(String.valueOf(profile.getPhoneNumber()));
         salary.setText(String.valueOf(worker.getSalary()));
         idLbl.setText(String.valueOf(worker.getId()));
+        personalCodeLbl.setText(String.valueOf(profile.getPersonalCode()));
     }
 }

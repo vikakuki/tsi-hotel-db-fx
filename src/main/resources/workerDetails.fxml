@@ -42,7 +42,7 @@
                </font>
             </Button>
             <Line endX="477.0" layoutX="110.0" layoutY="67.0" startX="-100.0" stroke="#9a6c4e" />
-            <Label layoutX="32.0" layoutY="93.0" text="First Name" textFill="#9a6c4e">
+            <Label layoutX="25.0" layoutY="93.0" text="First Name" textFill="#9a6c4e">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
@@ -74,23 +74,23 @@
                   <Insets />
                </opaqueInsets>
             </TextField>
-            <Label layoutX="34.0" layoutY="154.0" text="BirthDate" textFill="#9a6c4e">
+            <Label layoutX="25.0" layoutY="133.0" text="BirthDate" textFill="#9a6c4e">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </Label>
-            <DatePicker fx:id="birthDate" layoutX="110.0" layoutY="148.0" prefHeight="28.0" prefWidth="148.0" style="-fx-background-color: #ffffff;" />
+            <DatePicker fx:id="birthDate" layoutX="110.0" layoutY="126.0" prefHeight="28.0" prefWidth="148.0" style="-fx-background-color: #ffffff;" />
             <Label layoutX="308.0" layoutY="132.0" text="Login" textFill="#9a6c4e">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="32.0" layoutY="206.0" text="Position" textFill="#9a6c4e">
+            <Label layoutX="33.0" layoutY="219.0" text="Position" textFill="#9a6c4e">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </Label>
-            <TextField fx:id="position" layoutX="110.0" layoutY="199.0" prefHeight="28.0" prefWidth="134.0" promptText="position" style="-fx-background-color: #ffffff;">
+            <TextField fx:id="position" layoutX="110.0" layoutY="213.0" prefHeight="28.0" prefWidth="134.0" promptText="position" style="-fx-background-color: #ffffff;">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
@@ -211,6 +211,22 @@
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
+            </TextField>
+            <Label layoutX="25.0" layoutY="178.0" text="Personal coda" textFill="#9a6c4e">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="personalCodeLbl" layoutX="110.0" layoutY="171.0" prefHeight="28.0" prefWidth="134.0" promptText="personal code" style="-fx-background-color: #ffffff;">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
             </TextField>
          </children>
       </AnchorPane>

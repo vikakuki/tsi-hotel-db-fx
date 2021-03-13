@@ -46,7 +46,7 @@ public class WorkerPanelController {
     private ImageView checksBtn;
 
     @FXML
-    private ImageView roomsBtn;
+    private ImageView reportBtn;
 
     @FXML
     private ImageView reservationBtn;
@@ -58,7 +58,7 @@ public class WorkerPanelController {
     void initialize() {
         clientBtn.setCursor(Cursor.HAND);
         workerBtn.setCursor(Cursor.HAND);
-        roomsBtn.setCursor(Cursor.HAND);
+        reportBtn.setCursor(Cursor.HAND);
         Stage stage = new Stage();
         stage.setTitle("Hotel Database Management");
 
@@ -76,11 +76,8 @@ public class WorkerPanelController {
             stage.showAndWait();
         });
 
-        roomsBtn.setOnMouseClicked(event -> {
-            roomsBtn.getScene().getWindow().hide();
+        reportBtn.setOnMouseClicked(event -> {
 
-            stage.setScene(new Scene(fxWeaver.loadView(RoomsViewController.class), 626, 417));
-            stage.showAndWait();
         });
 
         checksBtn.setOnMouseClicked(event -> {

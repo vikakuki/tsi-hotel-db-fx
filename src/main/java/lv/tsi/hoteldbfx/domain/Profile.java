@@ -14,6 +14,9 @@ public class Profile {
     @Column(nullable = false)
     private String surname;
 
+    @Column(name = "personal_code", nullable = false, unique = true)
+    private Integer personalCode;
+
     @Column(nullable = false)
     private String email;
 
@@ -25,11 +28,12 @@ public class Profile {
 
     public Profile() {}
 
-    public Profile(String name, String surname, String email, String phoneNumber, LocalDate date) {
+    public Profile(String name, String surname, String email, String phoneNumber, LocalDate date, String personalCode) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.phoneNumber = Integer.parseInt(phoneNumber);
+        this.personalCode = Integer.parseInt(personalCode);
         this.birthDate = Date.valueOf(date);
     }
 
@@ -52,5 +56,9 @@ public class Profile {
 
     public Date getBirthDate() {
         return birthDate;
+    }
+
+    public Integer getPersonalCode() {
+        return personalCode;
     }
 }
