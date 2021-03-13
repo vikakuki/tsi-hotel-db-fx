@@ -11,6 +11,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import lv.tsi.hoteldbfx.domain.Bill;
+import lv.tsi.hoteldbfx.domain.BillRepository;
 import lv.tsi.hoteldbfx.domain.Room;
 import lv.tsi.hoteldbfx.domain.RoomRepository;
 import net.rgielen.fxweaver.core.FxWeaver;
@@ -19,23 +21,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
+import java.sql.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
 @Component
-@FxmlView("/roomsTable.fxml")
-public class RoomsViewController {
-    private RoomRepository roomRepository;
+@FxmlView("/billsTable.fxml")
+public class BillsViewController {
+    private BillRepository billRepository;
     private final FxWeaver fxWeaver;
 
-    private final ObservableList<Room> rooms;
+    private final ObservableList<Bill> bills;
 
     @Autowired
-    public RoomsViewController(RoomRepository roomRepository, FxWeaver fxWeaver) {
-        this.roomRepository = roomRepository;
+    public BillsViewController(BillRepository billRepository, FxWeaver fxWeaver) {
+        this.billRepository = billRepository;
         this.fxWeaver = fxWeaver;
-        List<Room> roomList = roomRepository.findAll();
-        rooms = FXCollections.observableArrayList(roomList);
+        List<Bill> billList = billRepository.findAll();
+        bills = FXCollections.observableArrayList(billList);
     }
 
     @FXML
@@ -45,41 +48,47 @@ public class RoomsViewController {
     private URL location;
 
     @FXML
+    private TableView<Bill> billsTable;
+
+    @FXML
+    private TableColumn<Bill, ?> id;
+
+    @FXML
+    private TableColumn<Bill, Date> date;
+
+    @FXML
+    private TableColumn<Bill, Double> price;
+
+    @FXML
+    private TableColumn<Bill, Long> clientId;
+
+    @FXML
+    private TableColumn<Bill, Long> reservationId;
+
+    @FXML
+    private TableColumn<Bill, Long> workerId;
+
+    @FXML
     private TextField reportId;
-
-    @FXML
-    private TableView<Room> roomsTable;
-
-    @FXML
-    private TableColumn<Room, Long> id;
-
-    @FXML
-    private TableColumn<Room, String> category;
-
-    @FXML
-    private TableColumn<Room, Integer> floor;
-
-    @FXML
-    private TableColumn<Room, String> view;
-
-    @FXML
-    private TableColumn<Room, Double> price;
-
-    @FXML
-    private Button backBtn;
 
     @FXML
     private Button reportBtn;
 
     @FXML
+    private Button backBtn;
+
+    @FXML
     void initialize() {
 
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        category.setCellValueFactory(new PropertyValueFactory<>("category"));
-        floor.setCellValueFactory(new PropertyValueFactory<>("floor"));
-        view.setCellValueFactory(new PropertyValueFactory<>("view"));
+        date.setCellValueFactory(new PropertyValueFactory<>("date"));
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
-        roomsTable.setItems(rooms);
+        clientId.setCellValueFactory(new PropertyValueFactory<>("clientId"));
+        reservationId.setCellValueFactory(new PropertyValueFactory<>("reservationId"));
+        workerId.setCellValueFactory(new PropertyValueFactory<>("workerId"));
+
+
+        billsTable.setItems(bills);
 
         Stage stage = new Stage();
         stage.setTitle("Hotel Database Management");

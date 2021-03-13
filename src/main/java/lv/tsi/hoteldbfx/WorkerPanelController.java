@@ -77,7 +77,10 @@ public class WorkerPanelController {
         });
 
         reportBtn.setOnMouseClicked(event -> {
+            reportBtn.getScene().getWindow().hide();
 
+            stage.setScene(new Scene(fxWeaver.loadView(ReportPanelController.class), 626, 417));
+            stage.showAndWait();
         });
 
         checksBtn.setOnMouseClicked(event -> {

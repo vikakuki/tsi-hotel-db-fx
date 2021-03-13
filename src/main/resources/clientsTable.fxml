@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ecdeb9 #ecdeb9;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lv.tsi.hoteldbfx.RoomsViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ecdeb9 #ecdeb9;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lv.tsi.hoteldbfx.ClientsViewController">
     <children>
         <AnchorPane prefHeight="5.0" prefWidth="533.0" style="-fx-background-color: #9a6c4e;">
             <children>
-                <Label layoutX="25.0" layoutY="8.0" text="Hotel's rooms" textFill="WHITE">
+                <Label layoutX="25.0" layoutY="8.0" text="Hotel's clients" textFill="WHITE">
                     <font>
                         <Font name="Arial" size="16.0" />
                     </font>
@@ -21,13 +21,14 @@
         </AnchorPane>
       <AnchorPane layoutY="49.0" prefHeight="351.0" prefWidth="600.0" style="-fx-background-color: #fafafa;">
          <children>
-            <TableView fx:id="roomsTable" layoutY="14.0" prefHeight="298.0" prefWidth="600.0" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TableView fx:id="clientTable" layoutY="14.0" prefHeight="298.0" prefWidth="600.0" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn fx:id="id" prefWidth="130.0" text="ID" />
-                <TableColumn fx:id="category" prefWidth="114.0" text="CATEGORY" />
-                  <TableColumn fx:id="floor" prefWidth="119.0" text="FLOOR" />
-                  <TableColumn fx:id="view" prefWidth="113.0" text="VIEW" />
-                  <TableColumn fx:id="price" minWidth="8.0" prefWidth="123.0" text="PRICE" />
+                <TableColumn fx:id="id" prefWidth="47.0" text="ID" />
+                <TableColumn fx:id="name" prefWidth="87.0" text="Name" />
+                  <TableColumn fx:id="surname" prefWidth="99.0" text="Surname" />
+                  <TableColumn fx:id="email" prefWidth="109.0" text="E-mail" />
+                  <TableColumn fx:id="phone" minWidth="8.0" prefWidth="123.0" text="Phone" />
+                  <TableColumn fx:id="birthDate" prefWidth="134.0" text="Birth date" />
               </columns>
             </TableView>
             <Label layoutX="327.0" layoutY="314.0" prefHeight="23.0" prefWidth="98.0" text="Id to print">

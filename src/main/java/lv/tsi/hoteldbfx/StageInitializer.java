@@ -21,7 +21,7 @@ public class StageInitializer implements ApplicationListener<ChartApplication.St
     @Override
     public void onApplicationEvent(ChartApplication.StageReadyEvent event) {
         Stage stage = event.getStage();
-        stage.setScene(new Scene(fxWeaver.loadView(MakeReservationController.class), 626, 417));
+        stage.setScene(new Scene(fxWeaver.loadView(ReservationsViewController.class), 626, 417));
         stage.setTitle(applicationTitle);
         stage.show();
     }
